@@ -13,6 +13,7 @@ jobs:
        #Chekout Repository
       - name:  Check out Code
         uses: actions/checkout@v4
+        
        #Set up.NET SDK
       - name: set up.NET SDK 
         uses: actions/setup-dotnet@v4
@@ -29,7 +30,7 @@ jobs:
 
           #Build the Project
       - name: Project Build
-        run: dotnet builds -- configuration release
+        run: dotnet build --configuration release
               
            
        
