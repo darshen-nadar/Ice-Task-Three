@@ -2,35 +2,34 @@ name: Build and Syntax Check
 
 on: 
  push:
-  branches: ["main"] #
- pull_request: 
+  branches: ["main"]
+ pull_request:
    branches: ["main"]
 jobs: 
-  build: 
-    runs-on: ubuntu-latest
+ build: 
+   runs-on: ubuntu-latest
       
-    steps: 
+   steps: 
        #Chekout Repository
-       - name:  Check out Code
-         uses: actions/checkout@v4
-
+      - name:  Check out Code
+        uses: actions/checkout@v4
        #Set up.NET SDK
-       - name: set up.NET SDK 
-         uses: actions/setup-dotnet@v4
-         with: 
-           dotnet-version: '9.0'
+      - name: set up.NET SDK 
+        uses: actions/setup-dotnet@v4
+        with: 
+          dotnet-version: '9.0'
 
        #Restore any dependencies
-       - name: Dependencies
-         run: dotnet restore
+      - name: Dependencies
+        run: dotnet restore
           
        #Run Unit Test
-       -  name:  Unit Test
-          run: dotnet test
+      -  name:  Unit Test
+         run: dotnet test
 
           #Build the Project
-       - name: Project Build
-         run: dotnet builds -- configuration release
+      - name: Project Build
+        run: dotnet builds -- configuration release
               
            
        
